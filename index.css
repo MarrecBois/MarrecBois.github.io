@@ -1,0 +1,115 @@
+:root {
+    --primary-pink: #ffb7c5;
+    --deep-red: #d63384;
+    --text-color: #4a4a4a;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    padding: 3rem;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.hero-img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 2rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: var(--deep-red);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    min-height: 50px;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+#btn-yes {
+    background-color: var(--deep-red);
+    color: white;
+    box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+}
+
+#btn-yes:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+}
+
+#btn-no {
+    background-color: white;
+    color: var(--text-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: absolute;
+    left: 50%;
+    transform: translateX(20px);
+}
+
+/* Celebration message hidden by default */
+#celebration {
+    display: none;
+}
+
+#celebration h2 {
+    color: var(--deep-red);
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    z-index: 5;
+}
