@@ -4,33 +4,36 @@ const container = document.querySelector('.container');
 const initialContent = document.getElementById('initial-content');
 const celebration = document.getElementById('celebration');
 
+let moveCount = 0;
+
 const moveButton = () => {
-    // Get container dimensions
-    const containerRect = container.getBoundingClientRect();
-    const btnRect = btnNo.getBoundingClientRect();
-
-    // padding from edges
-    const padding = 20;
-
-    // Calculate max positions within container
-    // We use the container's width/height directly
-    const maxX = containerRect.width - btnNo.offsetWidth - padding;
-    const maxY = containerRect.height - btnNo.offsetHeight - padding;
-
-    // Random position within container bounds
-    const randomX = Math.floor(Math.random() * (maxX - padding)) + padding;
-    const randomY = Math.floor(Math.random() * (maxY - padding)) + padding;
+    moveCount++;
 
     // Move the button to the container level if it's not already
-    // This removes it from the flex flow so it doesn't affect the Yes button
     if (btnNo.parentElement !== container) {
         container.appendChild(btnNo);
     }
 
+    const containerRect = container.getBoundingClientRect();
+    const btnWidth = btnNo.offsetWidth;
+    const btnHeight = btnNo.offsetHeight;
+    const padding = 20;
+
+    // Define 4 corner positions
+    const corners = [
+        { left: padding, top: padding }, // Top Left
+        { left: containerRect.width - btnWidth - padding, top: padding }, // Top Right
+        { left: padding, top: containerRect.height - btnHeight - padding }, // Bottom Left
+        { left: containerRect.width - btnWidth - padding, top: containerRect.height - btnHeight - padding } // Bottom Right
+    ];
+
+    // Cycle through corners based on moveCount
+    const nextCorner = corners[moveCount % corners.length];
+
     btnNo.style.position = 'absolute';
-    btnNo.style.transition = 'all 0.3s ease-out';
-    btnNo.style.left = `${randomX}px`;
-    btnNo.style.top = `${randomY}px`;
+    btnNo.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'; // Bouncy movement
+    btnNo.style.left = `${nextCorner.left}px`;
+    btnNo.style.top = `${nextCorner.top}px`;
     btnNo.style.zIndex = '1000';
     btnNo.style.margin = '0';
 };
