@@ -47,7 +47,7 @@ btnNo.addEventListener('touchstart', (e) => {
 
 btnYes.addEventListener('click', () => {
     initialContent.style.display = 'none';
-    btnNo.style.display = 'none';
+    btnNo.style.setProperty('display', 'none', 'important');
     celebration.style.display = 'block';
     startConfetti();
 });
