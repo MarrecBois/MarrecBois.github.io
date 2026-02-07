@@ -47,7 +47,9 @@ btnNo.addEventListener('touchstart', (e) => {
 
 btnYes.addEventListener('click', () => {
     initialContent.style.display = 'none';
-    btnNo.style.setProperty('display', 'none', 'important');
+    if (btnNo && btnNo.parentElement) {
+        btnNo.remove(); // Completely delete the element from the page
+    }
     celebration.style.display = 'block';
     startConfetti();
 });
