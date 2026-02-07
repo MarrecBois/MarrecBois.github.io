@@ -37,6 +37,10 @@ body {
     width: 90%;
     z-index: 10;
     transition: transform 0.3s ease;
+    position: relative;
+    /* Base for runaway button */
+    overflow: hidden;
+    /* Keep confetti and buttons inside if needed */
 }
 
 .hero-img {
@@ -60,9 +64,10 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    position: relative;
-    min-height: 50px;
-    margin-top: 1rem;
+    min-height: 60px;
+    margin-top: 2rem;
+    width: 100%;
+    align-items: center;
 }
 
 button {

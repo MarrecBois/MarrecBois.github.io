@@ -5,24 +5,34 @@ const initialContent = document.getElementById('initial-content');
 const celebration = document.getElementById('celebration');
 
 const moveButton = () => {
-    // Get container dimensions to keep button inside
+    // Get container dimensions
     const containerRect = container.getBoundingClientRect();
     const btnRect = btnNo.getBoundingClientRect();
 
-    // Calculate max positions within container (subtracting button size and some padding)
+    // padding from edges
     const padding = 20;
-    const maxX = containerRect.width - btnRect.width - padding;
-    const maxY = containerRect.height - btnRect.height - padding;
+
+    // Calculate max positions within container
+    // We use the container's width/height directly
+    const maxX = containerRect.width - btnNo.offsetWidth - padding;
+    const maxY = containerRect.height - btnNo.offsetHeight - padding;
 
     // Random position within container bounds
-    const randomX = Math.max(padding, Math.random() * maxX);
-    const randomY = Math.max(padding, Math.random() * maxY);
+    const randomX = Math.floor(Math.random() * (maxX - padding)) + padding;
+    const randomY = Math.floor(Math.random() * (maxY - padding)) + padding;
 
-    // Switch to absolute positioning relative to the container for the runaway effect
+    // Move the button to the container level if it's not already
+    // This removes it from the flex flow so it doesn't affect the Yes button
+    if (btnNo.parentElement !== container) {
+        container.appendChild(btnNo);
+    }
+
     btnNo.style.position = 'absolute';
+    btnNo.style.transition = 'all 0.3s ease-out';
     btnNo.style.left = `${randomX}px`;
     btnNo.style.top = `${randomY}px`;
-    btnNo.style.margin = '0'; // Remove any layout margins
+    btnNo.style.zIndex = '1000';
+    btnNo.style.margin = '0';
 };
 
 // Move when hovered or touched
