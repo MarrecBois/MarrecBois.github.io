@@ -46,7 +46,7 @@ body {
     object-fit: cover;
     border-radius: 50%;
     border: 5px solid white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -59,9 +59,10 @@ h1 {
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     position: relative;
     min-height: 50px;
+    margin-top: 1rem;
 }
 
 button {
@@ -72,13 +73,17 @@ button {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.2s ease;
-    min-width: 100px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #btn-yes {
     background-color: var(--deep-red);
     color: white;
     box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+    z-index: 2;
 }
 
 #btn-yes:hover {
@@ -89,10 +94,8 @@ button {
 #btn-no {
     background-color: white;
     color: var(--text-color);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    position: absolute;
-    left: 50%;
-    transform: translateX(20px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
 }
 
 /* Celebration message hidden by default */
